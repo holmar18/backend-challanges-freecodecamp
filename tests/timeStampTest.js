@@ -61,6 +61,7 @@ describe("Timestamp Tests", function () {
   // Testing the successful response with the current UTC and UNIX timestamps
   it("The test should return a status of 200 and current UTC & Unix from that date", async function () {
     try {
+      const res = await chai.request(app).get("/api/");
       // Define a tolerance value for the comparison (e.g., 150 milliseconds)
       const tolerance = 150;
 

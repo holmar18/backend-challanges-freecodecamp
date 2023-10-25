@@ -1,12 +1,15 @@
 const express = require("express");
 const useRoutes = require("./src/routes/timeStampRoutes");
 const app = express();
+var cors = require("cors");
 
 // Middleware setup to parse incoming requests with JSON payloads
 app.use(express.json());
 
 // Routes setup, mounting under /api
 app.use("/api", useRoutes);
+
+app.use(cors({optionsSuccessStatus: 200}));
 
 // Error handling middleware for handling any runtime errors
 app.use((err, req, res, next) => {

@@ -6,7 +6,7 @@
 const timeStampConverter = (dateOrUnix) => {
   // Check if the input is not a valid Unix timestamp or date string
   if (isNaN(dateOrUnix) && new Date(dateOrUnix) == "Invalid Date") {
-    return {error: "Invalid Date"};
+    return {error: new Date(dateOrUnix)};
   }
 
   // Check if the input is a valid Unix timestamp

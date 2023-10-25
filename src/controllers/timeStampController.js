@@ -7,15 +7,11 @@ const timeStampConvert = require("../utils/timeStamp");
  */
 const getTimeStamp = async (req, res) => {
   try {
-    if (!req.params.date) {
-      // Return the current time if the date parameter is empty
-      const dateData = timeStampConvert("");
-      return res.status(200).json(dateData);
-    }
-
     // Handle non-empty date parameter
     const dateUnixParam = req.params.date;
-    const dateData = timeStampConvert(dateUnixParam);
+    // if params is empty return current date, passing empty string to
+    // timeStampCovert will result in returning current date/unix
+    const dateData = timeStampConvert(!req.params.date ? "" : dateUnixParam);
 
     // Check for error message in the response data
     if (dateData.hasOwnProperty("error")) {
